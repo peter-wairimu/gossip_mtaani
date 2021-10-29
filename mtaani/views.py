@@ -86,6 +86,6 @@ def profile(request):
     return render(request, 'accounts/profile.html', context)
 
 
-@login_required(login_url='login')
+
 def home(request):
     return render (request, 'index.html')
