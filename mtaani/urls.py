@@ -1,6 +1,6 @@
 from django.urls import path
 from .import views
-# from .views import 
+# from .views import PostUpdate_view
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -16,7 +16,7 @@ urlpatterns =[
     path('new/', views.create_post, name='post'),
     path('<int:pk>/photo/',views.viewPhoto, name ='photo'),
     path('account/',views.accountSettings,name='account'),
-    path('<id>/update',views.update_view ,name='update'),
+
 
 
    

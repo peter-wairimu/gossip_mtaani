@@ -9,7 +9,8 @@ from django .contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.http import HttpResponse
-from django.views.generic import DetailView
+from django.views.generic import DetailView,UpdateView
+from django .contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -130,24 +131,3 @@ def accountSettings(request):
 	context = {'form':form}
 	return render(request, 'accounts/userproc.html', context)
 
-def update_view(request, id):
-    # dictionary for initial data with
-    # field names as keys
-    context ={}
- 
-    # fetch the object related to passed id
-    obj = get_object_or_404(GeeksModel, id = id)
- 
-    # pass the object as instance in form
-    form = GeeksForm(request.POST or None, instance = obj)
- 
-    # save the data from the form and
-    # redirect to detail_view
-    if form.is_valid():
-        form.save()
-        return redirect("home")
- 
-    # add form dictionary to context
-    context["form"] = form
- 
-    return render(request, "update_view.html", context)
