@@ -3,7 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import fields
-from .models import Profile
+from .models import Profile,NeighbourHood
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit,Layout,Field
 
 
 class CreateUserForm(UserCreationForm):
@@ -25,6 +27,24 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['image']
 
+
+
+
+class PostForm(forms.ModelForm):
+    helper = FormHelper()
+    helper.form_method = 'POST'
+    helper.add_input(Submit('post', 'post',css_class = 'btn btn-success'))
+
+    class Meta:
+        model = NeighbourHood
+        fields = [
+            'Name',
+            'location',
+            'Count',
+            'author',
+            'image',
+
+        ]
 
 
 

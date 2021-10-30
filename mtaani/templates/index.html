@@ -20,11 +20,11 @@
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+      <img src="{{post.image.url}}" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ post.Name }}</h5>
+        <a href="{% url 'photo' post.id%}"><h5 class="card-title">{{ post.Name }}</h5></a>
         <h5 class="card-title">Location: {{ post.location }}</h5>
         <p class="card-text">{{post.Count}}</p>
         <p class="card-text"><small class="text-muted">Posted by: {{post.author}}</small></p>

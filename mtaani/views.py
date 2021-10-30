@@ -3,13 +3,13 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile,NeighbourHood
 from .decorators import unauthenticated_user
-from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
+from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm,PostForm
 from django.contrib import messages
 from django .contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.http import HttpResponse
-
+from django.views.generic import DetailView
 # Create your views here.
 
 
@@ -94,6 +94,25 @@ def home(request):
     return render (request, 'index.html', context)
 
 
+
+def viewPhoto(request,pk):
+    photo = NeighbourHood.objects.get(id=pk)
+    return render(request,'post_detail.html',{'photo':photo})
+
+
+
+def create_post(request):
+    current_user = request.user
+    if request.method == "POST":
+        form = PostForm(request.POST,request.FILES)
+        if form.is_valid:
+            post = form.save(commit= False)
+            post.author = current_user
+            post.save()
+        return redirect('post_list')
+    else:
+        form = PostForm()
+    return render(request,'create_hood.html',{'form':form})
 
 
 

@@ -1,6 +1,6 @@
 from django.urls import path
 from .import views
-
+# from .views import 
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -13,6 +13,7 @@ urlpatterns =[
     path('user/',views.logoutUser,name='logout'),
     path('profile/', views.profile, name='profile'),
     path('',views.home, name="home"),
+    path('<int:pk>/photo/',views.viewPhoto, name ='photo'),
 
    
 
