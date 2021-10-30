@@ -32,7 +32,6 @@ class NeighbourHood(models.Model):
      Name = models.CharField(max_length=255)
      location = models.CharField(max_length=255)
      Count = models.IntegerField()
-     author = models.ForeignKey(User,on_delete=models.CASCADE)
      image = models.ImageField(blank=True,null=True)
 
      def __str__(self):

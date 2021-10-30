@@ -41,7 +41,6 @@ class PostForm(forms.ModelForm):
             'Name',
             'location',
             'Count',
-            'author',
             'image',
             
 
