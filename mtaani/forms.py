@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import fields
-from .models import Profile,NeighbourHood
+from .models import Profile,NeighbourHood,Business
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit,Layout,Field
 
@@ -48,7 +48,15 @@ class PostForm(forms.ModelForm):
         exclude =['user']
 
 
+class BusinessForm(forms.ModelForm):
 
+    class Meta:
+        model = Business
+        fields = ['businessname',]
+        widgets = {
+            'businessname':forms.Textarea(attrs={'class': 'form-control'}),
+        }
+            
 
 
 

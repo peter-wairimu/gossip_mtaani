@@ -44,8 +44,7 @@ class Business(models.Model):
     created_date = models.DateTimeField(default= timezone.now)
 
     def __str__(self):
-        return self.businessname
-    
+        return f'{self.businessname.Name}'
 
 
         

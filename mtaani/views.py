@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile,NeighbourHood
 from .decorators import unauthenticated_user,allowed_users
-from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm,PostForm
+from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm,PostForm,BusinessForm
 from django.contrib import messages
 from django .contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.http import HttpResponse
 from django.views.generic import DetailView,UpdateView
 from django .contrib.auth.mixins import LoginRequiredMixin
+from datetime import date, datetime
 # Create your views here.
 
 
@@ -131,3 +132,26 @@ def accountSettings(request):
 	context = {'form':form}
 	return render(request, 'accounts/userproc.html', context)
 
+
+
+def add_comment(request,pk):
+    post = NeighbourHood.objects.get(pk = pk)
+    form = BusinessForm(request.POST,instance=post)
+    if request.method == "POST":
+        if form.is_valid():
+            businessname = request.user.username
+            email = form.cleaned_data['businessname']
+            peter = NeighbourHood( businessname = businessname,email =email,created_date =datetime.now())
+
+            peter.save()
+            return redirect('home')
+        else:
+            print('form is invalid')
+
+    else:
+        form = BusinessForm
+
+    context = {
+        'form':form
+    }
+    return render(request,'Business.html',context)
