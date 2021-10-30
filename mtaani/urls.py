@@ -15,7 +15,8 @@ urlpatterns =[
     path('',views.home, name="home"),
     path('new/', views.create_post, name='post'),
     path('<int:pk>/photo/',views.viewPhoto, name ='photo'),
-    path('account/',views.accountSettings,name='account')
+    path('account/',views.accountSettings,name='account'),
+    path('<id>/update',views.update_view ,name='update'),
 
 
    

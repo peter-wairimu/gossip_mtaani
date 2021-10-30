@@ -48,6 +48,7 @@
           
             <div id="navbarBasicExample" class="navbar-menu">
               <div class="navbar-start">
+                
                 <a class="navbar-item" href="/">
                   Home
                 </a>
@@ -55,11 +56,14 @@
                 <a class="navbar-item" href="{% url 'post' %}">
                   add hood
                 </a>
-                  
+                
+                
                   <a class="navbar-item" href="{% url 'profile' %}">
                     Profile
                   </a>
-          
+                  
+                
+                  {% if request.user.is_staff %}
                 <div class="navbar-item has-dropdown is-hoverable">
                   <a class="navbar-link">
                     Settings
@@ -70,22 +74,29 @@
                     <a class="navbar-item">
                       Contacts
                     </a>
+                    <a class="navbar-item" href="{% url 'account' %}">
+                      user
+                    </a>
+                    {% else %}
                     
                    
                     <a class="navbar-item">
                       Report an issue
                     </a>
+                    {% endif %}
                     <hr class="navbar-divider">
                     <a class="navbar-item" href="{% url 'logout' %}">
                         Logout
                       </a>
                   </div>
+                
                 </div>
 
 
 
               </div>
             </div>
+            
             <form class="navbar-form" role="search"  action="">
 
               <div class="input-group">
@@ -100,6 +111,7 @@
             
 
           </nav>
+          
     </div>
   </section>
 

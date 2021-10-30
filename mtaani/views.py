@@ -117,13 +117,12 @@ def create_post(request):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['customer'])
+@allowed_users(allowed_roles=[' businessname '])
 def accountSettings(request):
-	customer = request.user.customer
-	form = PostForm(instance=customer)
-
+	bussiness = request.user. businessname 
+	form = PostForm(instance=bussiness)
 	if request.method == 'POST':
-		form = PostForm(request.POST, request.FILES,instance=customer)
+		form = PostForm(request.POST, request.FILES,instance=bussiness)
 		if form.is_valid():
 			form.save()
 
@@ -131,4 +130,24 @@ def accountSettings(request):
 	context = {'form':form}
 	return render(request, 'accounts/userproc.html', context)
 
-
+def update_view(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(GeeksModel, id = id)
+ 
+    # pass the object as instance in form
+    form = GeeksForm(request.POST or None, instance = obj)
+ 
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return redirect("home")
+ 
+    # add form dictionary to context
+    context["form"] = form
+ 
+    return render(request, "update_view.html", context)
