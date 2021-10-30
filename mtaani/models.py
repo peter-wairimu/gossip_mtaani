@@ -12,8 +12,8 @@ class Profile(models.Model):
 
 class NeighbourHood(models.Model):
      Name = models.CharField(max_length=255)
-     location = models.CharField()
+     location = models.CharField(max_length=255)
      Count = models.IntegerField()
      author = models.ForeignKey(User,on_delete=models.CASCADE)
-     
+
     
