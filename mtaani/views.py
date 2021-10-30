@@ -1,7 +1,7 @@
 from django.http import request
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile
+from .models import Profile,NeighbourHood
 from .decorators import unauthenticated_user
 from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
@@ -88,7 +88,10 @@ def profile(request):
 
 @login_required(login_url='login')
 def home(request):
-    return render (request, 'index.html')
+    posts = NeighbourHood.objects.all()
+    context={"posts":posts}
+
+    return render (request, 'index.html', context)
 
 
 
