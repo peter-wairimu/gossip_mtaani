@@ -10,3 +10,10 @@ class Profile(models.Model):
     image = models.ImageField(upload_to ='profile_pics')
 
 
+class NeighbourHood(models.Model):
+     Name = models.CharField(max_length=255)
+     location = models.CharField()
+     Count = models.IntegerField()
+     author = models.ForeignKey(User,on_delete=models.CASCADE)
+     
+    
