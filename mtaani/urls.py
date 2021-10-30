@@ -13,6 +13,7 @@ urlpatterns =[
     path('user/',views.logoutUser,name='logout'),
     path('profile/', views.profile, name='profile'),
     path('',views.home, name="home"),
+    path('new/', views.create_post, name='post'),
     path('<int:pk>/photo/',views.viewPhoto, name ='photo'),
 
    
