@@ -43,8 +43,10 @@ class PostForm(forms.ModelForm):
             'Count',
             'author',
             'image',
+            
 
         ]
+        exclude =['user']
 
 
 

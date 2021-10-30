@@ -2,7 +2,7 @@ from django.http import request
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile,NeighbourHood
-from .decorators import unauthenticated_user
+from .decorators import unauthenticated_user,allowed_users
 from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm,PostForm
 from django.contrib import messages
 from django .contrib.auth import authenticate, login,logout
@@ -116,5 +116,19 @@ def create_post(request):
 
 
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['customer'])
+def accountSettings(request):
+	customer = request.user.customer
+	form = PostForm(instance=customer)
+
+	if request.method == 'POST':
+		form = PostForm(request.POST, request.FILES,instance=customer)
+		if form.is_valid():
+			form.save()
+
+
+	context = {'form':form}
+	return render(request, 'accounts/userproc.html', context)
 
 
