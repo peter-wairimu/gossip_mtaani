@@ -42,6 +42,8 @@ class PostForm(forms.ModelForm):
             'location',
             'population',
             'image',
+            'healthno',
+            'policeno'
             
 
         ]
