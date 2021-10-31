@@ -140,7 +140,7 @@ def create_business(request):
             post = form.save(commit= False)
             post.author = current_user
             post.save()
-        return redirect('home')
+        return redirect('umash')
     else:
         form = BusinessForm()
     return render(request,'business.html',{'form':form})

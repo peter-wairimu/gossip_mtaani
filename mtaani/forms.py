@@ -40,7 +40,7 @@ class PostForm(forms.ModelForm):
         fields = [
             'Name',
             'location',
-            'Count',
+            'population',
             'image',
             
 

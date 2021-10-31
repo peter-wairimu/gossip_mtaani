@@ -31,8 +31,10 @@ class User(models.Model):
 class NeighbourHood(models.Model):
      Name = models.CharField(max_length=255)
      location = models.CharField(max_length=255)
-     Count = models.IntegerField()
+     population = models.IntegerField()
      image = models.ImageField(blank=True,null=True)
+     healthno = models.IntegerField(null=True)
+     policeno = models.IntegerField(null=True)
 
      def __str__(self):
          return self.Name
@@ -45,7 +47,7 @@ class Business(models.Model):
     created_date = models.DateTimeField(default= timezone.now)
 
     def __str__(self):
-        return f'{self.businessname.Name}'
+        return self.businessname
 
 
         
