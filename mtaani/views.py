@@ -120,7 +120,19 @@ def create_post(request):
 
 
 
-def create_post(request):
+
+
+def biznamtaa(request):
+    posts = Business.objects.all()
+    context={"posts":posts}
+
+    return render (request, 'bizhome.html', context)
+
+
+
+
+
+def create_business(request):
     current_user = request.user
     if request.method == "POST":
         form = BusinessForm(request.POST,request.FILES)
@@ -130,8 +142,8 @@ def create_post(request):
             post.save()
         return redirect('home')
     else:
-        form = PostForm()
-    return render(request,'create_hood.html',{'form':form})
+        form = BusinessForm()
+    return render(request,'business.html',{'form':form})
 
 
 
@@ -149,32 +161,6 @@ def accountSettings(request):
 
 	context = {'form':form}
 	return render(request, 'accounts/userproc.html', context)
-
-
-
-def add_comment(request,pk):
-    post = NeighbourHood.objects.get(pk = pk)
-    form = BusinessForm(request.POST,instance=post)
-    if request.method == "POST":
-        if form.is_valid():
-            businessname = request.user.username
-            email = form.cleaned_data['businessname']
-            peter = Business( businessname = businessname,email =email,created_date =datetime.now())
-
-            peter.save()
-            return redirect('home')
-        else:
-            print('success')
-
-    else:
-        form = BusinessForm
-
-    context = {
-        'form':form
-    }
-    return render(request,'business.html',context)
-
-
 
 
 

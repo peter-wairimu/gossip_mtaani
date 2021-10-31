@@ -14,9 +14,10 @@ urlpatterns =[
     path('profile/', views.profile, name='profile'),
     path('',views.home, name="home"),
     path('new/', views.create_post, name='post'),
+    path('bizna/', views.create_business, name='bizz'),
     path('<int:pk>/photo/',views.viewPhoto, name ='photo'),
     path('account/',views.accountSettings,name='account'),
-    path('add-comment/<int:pk>/', views.add_comment, name='add-comment'),
+    
   
 
 
