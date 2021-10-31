@@ -20,11 +20,7 @@ urlpatterns =[
     path('account/',views.accountSettings,name='account'),
     path('search_results/',views.search_results, name='search_results')
     
-  
 
-
-
-   
 
 ]
 
