@@ -49,5 +49,12 @@ class Business(models.Model):
     def __str__(self):
         return self.businessname
 
+    @classmethod
+    def search_category(cls,search):
+        searches = cls.objects.filter(businessname__icontains = search)
+        return searches
+    
+
+
 
         
