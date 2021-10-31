@@ -1,0 +1,1 @@
+web: gunicorn gossip.wsgi --log-file -
