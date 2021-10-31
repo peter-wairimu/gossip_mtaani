@@ -33,7 +33,7 @@ class ProfileUpdateForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     helper = FormHelper()
     helper.form_method = 'POST'
-    helper.add_input(Submit('post', 'post',css_class = 'btn btn-success'))
+    helper.add_input(Submit('post', 'post',css_class = 'btn btn-warning'))
 
     class Meta:
         model = NeighbourHood
@@ -53,7 +53,7 @@ class PostForm(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
     helper = FormHelper()
     helper.form_method = 'POST'
-    helper.add_input(Submit('post', 'post',css_class = 'btn btn-success'))
+    helper.add_input(Submit('post', 'post',css_class = 'btn btn-warning'))
     
     
     class Meta:
