@@ -1,6 +1,6 @@
 from django.urls import path
 from .import views
-# from .views import PostUpdate_view
+
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -17,6 +17,7 @@ urlpatterns =[
     path('<int:pk>/photo/',views.viewPhoto, name ='photo'),
     path('account/',views.accountSettings,name='account'),
     path('add-comment/<int:pk>/', views.add_comment, name='add-comment'),
+  
 
 
 

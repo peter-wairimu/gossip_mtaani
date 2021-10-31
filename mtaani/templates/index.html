@@ -30,6 +30,30 @@
         <p class="card-text"><small class="text-muted">Posted by: {{post.author}}</small></p>
       </div>
     </div>
+
+    <h2>comments......  </h2>
+              {% if not post.business.all %}
+                <p>No Comments Yet... </p>
+
+                {% else %}
+
+                {% for business in post.business.all %}
+
+                <h2>{{business.businessname}}</h2>
+                <p>{{business.email}}</p>
+                <p>{{business.created_date}}</p>
+                {%endfor%}
+
+                {%endif%}
+
+                <a href="{% url 'add-comment' post.id%}"><button class="button is-info"  style="text-transform: capitalize; font-style: italic;">add business</button></a>
+              
+                
+
+
+
+
+
   </div>
 </div>
 

@@ -49,13 +49,15 @@ class PostForm(forms.ModelForm):
 
 
 class BusinessForm(forms.ModelForm):
-
+    helper = FormHelper()
+    helper.form_method = 'POST'
+    helper.add_input(Submit('post', 'post',css_class = 'btn btn-success'))
+    
+    
     class Meta:
         model = Business
-        fields = ['businessname',]
-        widgets = {
-            'businessname':forms.Textarea(attrs={'class': 'form-control'}),
-        }
+        fields = ['businessname','email','image','created_date']
+        
             
 
 

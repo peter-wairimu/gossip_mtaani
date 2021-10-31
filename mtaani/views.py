@@ -1,7 +1,7 @@
 from django.http import request
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile,NeighbourHood
+from .models import Profile,NeighbourHood,Business
 from .decorators import unauthenticated_user,allowed_users
 from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm,PostForm,BusinessForm
 from django.contrib import messages
@@ -118,6 +118,24 @@ def create_post(request):
 
 
 
+
+
+def create_post(request):
+    current_user = request.user
+    if request.method == "POST":
+        form = BusinessForm(request.POST,request.FILES)
+        if form.is_valid:
+            post = form.save(commit= False)
+            post.author = current_user
+            post.save()
+        return redirect('home')
+    else:
+        form = PostForm()
+    return render(request,'create_hood.html',{'form':form})
+
+
+
+
 @login_required(login_url='login')
 @allowed_users(allowed_roles=[' businessname '])
 def accountSettings(request):
@@ -141,12 +159,12 @@ def add_comment(request,pk):
         if form.is_valid():
             businessname = request.user.username
             email = form.cleaned_data['businessname']
-            peter = NeighbourHood( businessname = businessname,email =email,created_date =datetime.now())
+            peter = Business( businessname = businessname,email =email,created_date =datetime.now())
 
             peter.save()
             return redirect('home')
         else:
-            print('form is invalid')
+            print('success')
 
     else:
         form = BusinessForm
@@ -154,4 +172,10 @@ def add_comment(request,pk):
     context = {
         'form':form
     }
-    return render(request,'Business.html',context)
+    return render(request,'business.html',context)
+
+
+
+
+
+

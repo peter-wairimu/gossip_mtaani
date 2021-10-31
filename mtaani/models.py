@@ -39,8 +39,9 @@ class NeighbourHood(models.Model):
 
 
 class Business(models.Model):
-    businessname = models.ForeignKey(NeighbourHood,related_name='business',on_delete=models.CASCADE)
+    businessname = models.CharField(max_length=255)
     email =models.EmailField(max_length=100)
+    image = models.ImageField(blank=True,null=True)
     created_date = models.DateTimeField(default= timezone.now)
 
     def __str__(self):
