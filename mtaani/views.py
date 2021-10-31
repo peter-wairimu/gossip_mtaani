@@ -120,8 +120,8 @@ def create_post(request):
 
 
 def search_results(request):
-    if ' businessname' in request.GET and request.GET[" businessname"]:
-        search_term = request.GET.get(" businessname")
+    if 'businessname' in request.GET and request.GET["businessname"]:
+        search_term = request.GET.get("businessname")
         searched_articles = Business.search_category(search_term)
         message = f"{search_term}"
         return render(request, 'search.html',{"message":message,"categories": searched_articles})

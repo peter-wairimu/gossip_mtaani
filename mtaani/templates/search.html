@@ -6,19 +6,26 @@
     {% if categories %}
 
     {% for post in categories %}
-      <div class="col-md-6 col-lg-3 col-12 col-sm-12">
-          <div class="row m-1 mb-3">
-              <div class="card  ">
-                  <img  class="image-thumbnail img-fluid mt-3" src="{{post.image}}" alt="Card image cap">
-                  <h5 class="centered">{{post.businessname}}</h5>
-                  <div class="card-body">
-                      <p class="card-text"> Email Address: {{ post.email }}</p>
-                      <p class="card-text"> Email Address: {{post.created_date}}</p>
-                  </div>
-                </div>
-          </div>
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+          {% if post.image %}
+        <img src="{{post.image.url}}" class="img-fluid rounded-start" alt="...">
+        {% endif %}
       </div>
-      {% endfor %}
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Bizname: {{ post.businessname }}</h5>
+          <h5 class="card-title">Email Address: {{ post.email }}</h5>
+          <p class="card-text">created at:{{post.created_date}}</p>
+        </div>
+      </div>
+  
+  
+    </div>
+  </div>
+  {% endfor %}
       {%endif%}
     
     </div>

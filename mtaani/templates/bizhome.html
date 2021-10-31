@@ -2,39 +2,37 @@
 {% block content %}
 
 
+
 {% for post in posts %}
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-        {% if post.image %}
-      <img src="{{post.image.url}}" class="img-fluid rounded-start" alt="...">
-      {% endif %}
+<div class="container">
+
+<div class="columns is-mobile is-multiline is-centered">
+
+
+    <div class="column is-one-quarter">
+        <div class="box">
+              <div class="media-left">
+                <figure class="image is-264x264">
+                    {% if post.image %}
+                    <img src="{{post.image.url}}" class="img-fluid rounded-start" alt="...">
+                    {% endif %}
+                </figure>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Bizname: {{ post.businessname }}</h5>
+                  <h5 class="card-title">Email Address: {{ post.email }}</h5>
+                  <p class="card-text">created at:{{post.created_date}}</p>
+                </div>
+              </div>
+              <a href="{% url 'bizz'%}"><button class="button"  style="text-transform: capitalize; font-style: italic; background-color: 
+                #F0A500;">add business</button></a>
+          </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Bizname: {{ post.businessname }}</h5>
-        <h5 class="card-title">Email Address: {{ post.email }}</h5>
-        <p class="card-text">created at:{{post.created_date}}</p>
-      </div>
-    </div>
-
-    
-
-  
-              
-
-
-
-  </div>
 </div>
-<a href="{% url 'bizz'%}"><button class="button is-info"  style="text-transform: capitalize; font-style: italic;">add business</button></a>
 
-{% endfor %}
-
-
-
-
+    {% endfor %}
 
 
 {% endblock%}
