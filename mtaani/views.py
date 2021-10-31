@@ -102,7 +102,7 @@ def viewPhoto(request,pk):
     return render(request,'post_detail.html',{'photo':photo})
 
 
-
+@login_required(login_url='login')
 def create_post(request):
     current_user = request.user
     if request.method == "POST":
@@ -134,7 +134,7 @@ def search_results(request):
 
 
 
-
+@login_required(login_url='login')
 def biznamtaa(request):
     posts = Business.objects.all()
     context={"posts":posts}
@@ -144,7 +144,7 @@ def biznamtaa(request):
 
 
 
-
+@login_required(login_url='login')
 def create_business(request):
     current_user = request.user
     if request.method == "POST":

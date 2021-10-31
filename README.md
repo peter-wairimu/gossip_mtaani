@@ -1,6 +1,6 @@
-# Awwards clone
+# My Mtaa
 
-## Date, 24/10/2021
+## Date, 31/10/2021
 
 
 ## By Peter Chege Wairimu.
@@ -8,18 +8,18 @@
 
 # Description 
 
-Awwards web app is a web app where a user can view projects posted by other users post a project and also rate a project and write a review
+my mtaa is a web application where a user gets to explore other regions around him or in the world. A user can add a hood and bussiness in their hood also.
 
 # Instructions
 
-(i). Register in the sign up page inoder to have access in the account
+(i). Register in the sign up page inorder to have access in the the page
 
 
-(ii). Login and see your profile update it if you want
+(ii). Login and see your profile also you can  update it if you want
 
 
 
-(iii). Add a project rate other projects and also write a review
+(iii). Add  your neighbourhood, add bussiness around your hood.  
 
 
 
@@ -42,9 +42,9 @@ Awwards web app is a web app where a user can view projects posted by other user
 
 
 ## 
-<img src="awwards/static/images/read3.png">
-<img src="awwards/static/images/read2.png">
-<img src="awwards/static/images/read1.png">
+<img src="mtaani/static/images/gossip2.png">
+<img src="mtaani/static/images/gossip.png">
+
 
 
 
